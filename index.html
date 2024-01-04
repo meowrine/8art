@@ -1,0 +1,398 @@
+<canvas id="complicatedSunCanvas" width="200" height="200"></canvas>
+<script>
+  var canvas = document.getElementById("complicatedSunCanvas");
+  var ctx = canvas.getContext("2d");
+
+  // Create a radial gradient for the sun
+  var gradient = ctx.createRadialGradient(100, 100, 10, 100, 100, 80);
+  gradient.addColorStop(0, "gold");
+  gradient.addColorStop(1, "orange");
+
+  // Draw the sun (filled circle with radial gradient)
+  ctx.beginPath();
+  ctx.arc(100, 100, 80, 0, 2 * Math.PI);
+  ctx.fillStyle = gradient;
+  ctx.fill();
+
+  // Draw the sunrays with a pattern
+  var patternCanvas = document.createElement("canvas");
+  var patternCtx = patternCanvas.getContext("2d");
+  patternCanvas.width = 20;
+  patternCanvas.height = 20;
+
+  patternCtx.beginPath();
+  patternCtx.moveTo(0, 0);
+  patternCtx.lineTo(10, 20);
+  patternCtx.lineTo(20, 0);
+  patternCtx.fillStyle = "yellow";
+  patternCtx.fill();
+
+  var pattern = ctx.createPattern(patternCanvas, "repeat");
+  ctx.strokeStyle = pattern;
+  ctx.lineWidth = 10;
+
+  for (var i = 0; i < 12; i++) {
+    var angle = (i * 30) * (Math.PI / 180); // Convert degrees to radians
+    var rayEndX = 100 + 80 * Math.cos(angle);
+    var rayEndY = 100 + 80 * Math.sin(angle);
+
+    ctx.beginPath();
+    ctx.moveTo(100, 100);
+    ctx.lineTo(rayEndX, rayEndY);
+    ctx.stroke();
+  }
+</script>
+
+
+<canvas id="butterflyCanvas" width="200" height="200"></canvas>
+<script>
+  var canvas = document.getElementById("butterflyCanvas");
+  var ctx = canvas.getContext("2d");
+
+  // Butterfly body
+  ctx.beginPath();
+  ctx.moveTo(100, 100);
+  ctx.lineTo(110, 130);
+  ctx.lineTo(90, 130);
+  ctx.fillStyle = "brown";
+  ctx.fill();
+
+  // Butterfly wings (left)
+  ctx.beginPath();
+  ctx.moveTo(100, 100);
+  ctx.quadraticCurveTo(60, 60, 20, 100);
+  ctx.fillStyle = "purple";
+  ctx.fill();
+
+  // Butterfly wings (right)
+  ctx.beginPath();
+  ctx.moveTo(100, 100);
+  ctx.quadraticCurveTo(140, 60, 180, 100);
+  ctx.fillStyle = "blue";
+  ctx.fill();
+
+  // Wing patterns (left)
+  ctx.beginPath();
+  ctx.moveTo(60, 100);
+  ctx.quadraticCurveTo(50, 80, 20, 100);
+  ctx.quadraticCurveTo(30, 120, 60, 100);
+  ctx.fillStyle = "pink";
+  ctx.fill();
+
+  // Wing patterns (right)
+  ctx.beginPath();
+  ctx.moveTo(140, 100);
+  ctx.quadraticCurveTo(150, 80, 180, 100);
+  ctx.quadraticCurveTo(170, 120, 140, 100);
+  ctx.fillStyle = "cyan";
+  ctx.fill();
+</script>
+
+<canvas id="beeCanvas" width="200" height="200"></canvas>
+<script>
+  var canvas = document.getElementById("beeCanvas");
+  var ctx = canvas.getContext("2d");
+
+  // Bee body
+  ctx.beginPath();
+  ctx.arc(100, 100, 20, 0, 2 * Math.PI);
+  ctx.fillStyle = "yellow";
+  ctx.fill();
+
+  // Bee head
+  ctx.beginPath();
+  ctx.arc(115, 90, 8, 0, 2 * Math.PI);
+  ctx.fillStyle = "black";
+  ctx.fill();
+
+  // Bee eyes
+  ctx.beginPath();
+  ctx.arc(112, 88, 2, 0, 2 * Math.PI);
+  ctx.arc(118, 88, 2, 0, 2 * Math.PI);
+  ctx.fillStyle = "white";
+  ctx.fill();
+
+  // Bee wings (left)
+  ctx.beginPath();
+  ctx.moveTo(95, 100);
+  ctx.quadraticCurveTo(80, 70, 65, 100);
+  ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+  ctx.fill();
+
+  // Bee wings (right)
+  ctx.beginPath();
+  ctx.moveTo(105, 100);
+  ctx.quadraticCurveTo(120, 70, 135, 100);
+  ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+  ctx.fill();
+
+  // Bee stripes
+  ctx.beginPath();
+  ctx.moveTo(100, 100);
+  ctx.lineTo(80, 120);
+  ctx.moveTo(100, 100);
+  ctx.lineTo(80, 100);
+  ctx.moveTo(100, 100);
+  ctx.lineTo(80, 80);
+
+  ctx.moveTo(100, 100);
+  ctx.lineTo(120, 120);
+  ctx.moveTo(100, 100);
+  ctx.lineTo(120, 100);
+  ctx.moveTo(100, 100);
+  ctx.lineTo(120, 80);
+
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+</script>
+
+<canvas id="houseCanvas" width="200" height="200"></canvas>
+<script>
+  var canvas = document.getElementById("houseCanvas");
+  var ctx = canvas.getContext("2d");
+
+  // House body
+  ctx.fillStyle = "lightblue";
+  ctx.fillRect(50, 80, 100, 80);
+
+  // Roof
+  ctx.beginPath();
+  ctx.moveTo(50, 80);
+  ctx.lineTo(100, 40);
+  ctx.lineTo(150, 80);
+  ctx.closePath();
+  ctx.fillStyle = "red";
+  ctx.fill();
+
+  // Door
+  ctx.fillStyle = "brown";
+  ctx.fillRect(90, 100, 20, 40);
+
+  // Window 1
+  ctx.fillStyle = "yellow";
+  ctx.fillRect(60, 90, 20, 20);
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = 2;
+  ctx.strokeRect(60, 90, 20, 20);
+  ctx.moveTo(70, 90);
+  ctx.lineTo(70, 110);
+  ctx.moveTo(60, 100);
+  ctx.lineTo(80, 100);
+  ctx.stroke();
+
+  // Window 2
+  ctx.fillStyle = "yellow";
+  ctx.fillRect(120, 90, 20, 20);
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = 2;
+  ctx.strokeRect(120, 90, 20, 20);
+  ctx.moveTo(130, 90);
+  ctx.lineTo(130, 110);
+  ctx.moveTo(120, 100);
+  ctx.lineTo(140, 100);
+  ctx.stroke();
+</script>
+
+
+<canvas id="carCanvas" width="200" height="200"></canvas>
+<script>
+  var canvas = document.getElementById("carCanvas");
+  var ctx = canvas.getContext("2d");
+
+  // Car body
+  ctx.fillStyle = "blue";
+  ctx.fillRect(30, 70, 140, 40);
+  ctx.fillRect(70, 40, 60, 30);
+
+  // Car roof
+  ctx.beginPath();
+  ctx.moveTo(30, 70);
+  ctx.lineTo(70, 40);
+  ctx.lineTo(130, 40);
+  ctx.lineTo(170, 70);
+  ctx.fillStyle = "darkblue";
+  ctx.fill();
+
+  // Car windows
+  ctx.fillStyle = "lightblue";
+  ctx.fillRect(80, 50, 20, 20);
+  ctx.fillRect(110, 50, 20, 20);
+
+  // Car wheels
+  ctx.beginPath();
+  ctx.arc(50, 110, 10, 0, 2 * Math.PI);
+  ctx.arc(150, 110, 10, 0, 2 * Math.PI);
+  ctx.fillStyle = "black";
+  ctx.fill();
+
+  // Connecting rod
+  ctx.fillRect(60, 110, 80, 5);
+</script>
+
+<canvas id="flowerCanvas" width="200" height="200"></canvas>
+<script>
+  var canvas = document.getElementById("flowerCanvas");
+  var ctx = canvas.getContext("2d");
+
+  // Flower stem
+  ctx.beginPath();
+  ctx.moveTo(100, 180);
+  ctx.lineTo(100, 120);
+  ctx.strokeStyle = "green";
+  ctx.lineWidth = 5;
+  ctx.stroke();
+
+  // Flower petals
+  for (var i = 0; i < 6; i++) {
+    var angle1 = i * 60 * (Math.PI / 180);
+    var angle2 = (i + 1) * 60 * (Math.PI / 180);
+
+    ctx.beginPath();
+    ctx.moveTo(100, 120);
+    ctx.bezierCurveTo(100 + 20 * Math.cos(angle1), 90 + 20 * Math.sin(angle1),
+                      100 + 40 * Math.cos(angle1), 70 + 40 * Math.sin(angle1),
+                      100 + 60 * Math.cos(angle2), 90 + 20 * Math.sin(angle2));
+    ctx.fillStyle = "pink";
+    ctx.fill();
+    ctx.strokeStyle = "purple";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+
+  // Flower central part (stigma and stamens)
+  ctx.beginPath();
+  ctx.arc(100, 120, 8, 0, 2 * Math.PI);
+  ctx.fillStyle = "yellow";
+  ctx.fill();
+
+  // Flower leaves
+  ctx.beginPath();
+  ctx.moveTo(100, 120);
+  ctx.quadraticCurveTo(90, 150, 80, 130);
+  ctx.quadraticCurveTo(85, 140, 100, 120);
+  ctx.fillStyle = "green";
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(100, 120);
+  ctx.quadraticCurveTo(110, 150, 120, 130);
+  ctx.quadraticCurveTo(115, 140, 100, 120);
+  ctx.fillStyle = "green";
+  ctx.fill();
+</script>
+
+
+<canvas id="buildingCanvas" width="200" height="200"></canvas>
+<script>
+  var canvas = document.getElementById("buildingCanvas");
+  var ctx = canvas.getContext("2d");
+
+  // Building base
+  ctx.fillStyle = "gray";
+  ctx.fillRect(30, 70, 140, 80);
+
+  // Windows
+  for (var i = 0; i < 3; i++) {
+    for (var j = 0; j < 4; j++) {
+      ctx.fillStyle = "lightblue";
+      ctx.fillRect(40 + i * 45, 80 + j * 20, 20, 10);
+      ctx.fillStyle = "darkblue";
+      ctx.fillRect(65 + i * 45, 80 + j * 20, 20, 10);
+    }
+  }
+
+  // Doors
+  ctx.fillStyle = "brown";
+  ctx.fillRect(90, 120, 20, 30);
+  ctx.fillStyle = "yellow";
+  ctx.fillRect(92, 122, 16, 26);
+
+  // Roof
+  ctx.beginPath();
+  ctx.moveTo(30, 70);
+  ctx.lineTo(100, 40);
+  ctx.lineTo(170, 70);
+  ctx.fillStyle = "red";
+  ctx.fill();
+
+  // Antenna
+  ctx.fillStyle = "black";
+  ctx.fillRect(98, 20, 4, 20);
+  ctx.beginPath();
+  ctx.arc(100, 20, 6, 0, 2 * Math.PI);
+  ctx.fillStyle = "black";
+  ctx.fill();
+</script>
+
+
+
+<canvas id="treeCanvas" width="200" height="200"></canvas>
+<script>
+  var canvas = document.getElementById("treeCanvas");
+  var ctx = canvas.getContext("2d");
+
+  // Tree trunk
+  ctx.fillStyle = "saddlebrown";
+  ctx.fillRect(90, 100, 20, 80);
+
+  // Tree branches
+  ctx.beginPath();
+  ctx.moveTo(100, 70);
+  ctx.lineTo(70, 100);
+  ctx.lineTo(80, 100);
+  ctx.lineTo(80, 90);
+  ctx.lineTo(60, 120);
+  ctx.lineTo(70, 120);
+  ctx.lineTo(70, 110);
+  ctx.lineTo(50, 140);
+  ctx.lineTo(60, 140);
+  ctx.lineTo(60, 130);
+  ctx.lineWidth = 5;
+  ctx.strokeStyle = "saddlebrown";
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(100, 70);
+  ctx.lineTo(130, 100);
+  ctx.lineTo(120, 100);
+  ctx.lineTo(120, 90);
+  ctx.lineTo(140, 120);
+  ctx.lineTo(130, 120);
+  ctx.lineTo(130, 110);
+  ctx.lineTo(150, 140);
+  ctx.lineTo(140, 140);
+  ctx.lineTo(140, 130);
+  ctx.lineWidth = 5;
+  ctx.strokeStyle = "saddlebrown";
+  ctx.stroke();
+
+  // Tree leaves
+  ctx.beginPath();
+  ctx.arc(100, 70, 40, 0, 2 * Math.PI);
+  ctx.fillStyle = "green";
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(70, 100, 40, 0, 2 * Math.PI);
+  ctx.fillStyle = "green";
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(130, 100, 40, 0, 2 * Math.PI);
+  ctx.fillStyle = "green";
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(100, 120, 40, 0, 2 * Math.PI);
+  ctx.fillStyle = "green";
+  ctx.fill();
+</script>
+
+
+
+
+
+
+
+
